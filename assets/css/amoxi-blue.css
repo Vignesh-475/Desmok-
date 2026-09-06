@@ -56,8 +56,8 @@
   --amoxi-text-rgb: 178, 175, 166;
   --amoxi-text-gray: #636363;
   --amoxi-text-gray-rgb: 99, 99, 99;
-  --amoxi-base: #193a70;
-  --amoxi-base-rgb: 25, 58, 112;
+  --amoxi-base: #007bff;
+  --amoxi-base-rgb: 0, 123, 255;
   --amoxi-gray: #969697;
   --amoxi-gray-rgb: 150, 150, 151;
   --amoxi-gray2: #C2C2C2;
@@ -25068,5 +25068,3 @@ body.boxed-wrapper .main-footer__shape-2 {
   display: none;
 }
 /*# sourceMappingURL=amoxi.css.map */
-
-
