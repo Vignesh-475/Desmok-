@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Internal, non-page assets
+Disallow: /_dev/

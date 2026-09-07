@@ -1,0 +1,22 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Backups & snapshots (keep these out of the deployed site)
+*.bak
+*_old.*
+*.orig
+
+# Internal tooling output / logs
+*.log
+
+# Python (used only by _dev/scripts, never deployed)
+__pycache__/
+*.pyc
+.venv*/
+
+.vercel
+.env*

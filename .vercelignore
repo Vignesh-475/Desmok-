@@ -1,0 +1,10 @@
+# Internal tooling & docs — not part of the deployed site
+_dev/
+CLAUDE.md
+
+# PHP handler can't run on Vercel's static hosting (see note re: contact form)
+assets/inc/sendemail.php
+
+# Repo/meta
+.git/
+.gitignore

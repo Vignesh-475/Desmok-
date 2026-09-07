@@ -21,20 +21,49 @@ paths and JS). From the repo root:
 python -m http.server 8123 --bind 127.0.0.1   # then open http://127.0.0.1:8123/index.html
 ```
 
-- **Entry page:** `index.html` (currently byte-identical to `my-website.html`, the
-  customized Desmok homepage — the last commit set this as the default index).
+- **Entry page:** `index.html` at the repo root (byte-identical to `pages/desmok/my-website.html`,
+  the customized Desmok homepage). `index.html` and `404.html` are the **only** HTML at the
+  root — everything else lives under `pages/` (see Layout).
 - The contact form posts to `assets/inc/sendemail.php`, so **actually sending mail needs a
   PHP-capable server** (e.g. `php -S 127.0.0.1:8000`); the Python server above renders
-  everything else but cannot execute the PHP.
+  everything else but cannot execute the PHP. **Note:** the live site is on Vercel (static),
+  which cannot run PHP — the form there needs a form service (Formspree/Web3Forms).
+- **Deployment:** Vercel project `desmok` (team `akashs-projects-c931fb4b`), live at
+  `https://desmok-five.vercel.app`. Not Git-connected (the GitHub repo is under another
+  account), so redeploy from this folder with `vercel --prod`. `.vercelignore` keeps `_dev/`,
+  `CLAUDE.md`, and `sendemail.php` out of the deploy.
+
+## Paths — root-absolute
+
+**All internal references are root-absolute** (`/assets/...`, `/pages/blog/x.html`), so a
+page works regardless of which folder it sits in. When adding/editing links or assets, use a
+leading `/` — do **not** use bare (`assets/…`) or `../` relative paths. This resolves
+correctly on Vercel and on `python -m http.server` run from the repo root; it only breaks
+under `file://` (which was already unsupported).
+
+## Page metadata — brand-first
+
+- **`<title>`** on every page is brand-first: `Desmok AI | <Page name>` (homepage:
+  `Desmok AI | Product Engineering & Automation Studio`). Keep this order so "Desmok AI"
+  shows beside the favicon in the browser tab. Don't reintroduce the template's
+  `|| Creative Agency and Portfolio HTML Template` suffix.
+- **`<meta name="description">`** is one site-wide Desmok description shared by all pages
+  (the theme vendor's boilerplate was removed). If you change it, change it on every page.
+- **Favicons** are the Desmok "D" mark on a white circle with transparent corners,
+  generated from the source logo. Three dirs exist (`assets/images/favicons`, `favicons-2`,
+  `favicons-3`) because different pages reference each — keep all three in sync.
 
 ## Layout
 
-- **Root `*.html`** — every page of the site. Two kinds live side by side:
-  - **Custom Desmok pages:** `my-website.html`, `my-services.html`, `my-shop.html`,
-    `service-d-*.html` (six service detail pages).
-  - **Original template demo pages** (`index-2..6`, `blog-*`, `portfolio*`, `team*`,
-    `gallery*`, `products*`, `services*`, etc.) — kept as a reference/component library.
-    Don't assume these are linked from the live nav; check before treating one as live.
+- **Root:** only `index.html` (homepage, served at `/`) and `404.html` (Vercel error page).
+- **`pages/`** — every other page, grouped by kind:
+  - `pages/desmok/` — the **custom Desmok pages**: `my-website.html`, `my-services.html`,
+    `my-shop.html`, `service-d-*.html` (six service detail pages).
+  - `pages/blog/`, `pages/shop/`, `pages/portfolio/`, `pages/team/`, `pages/gallery/`,
+    `pages/services/`, `pages/testimonials/`, `pages/company/` (about/contact/faq), and
+    `pages/home-demos/` (`index-2..6`, `index-boxed`, `index-one-page`) — **original template
+    demo pages** kept as a reference/component library. Most are wired into the live nav
+    dropdowns; check links before treating one as dead.
 - **`assets/css/`** — `amoxi.css` is the base template stylesheet; **`amoxi-blue.css` is
   the active Desmok theme** loaded by `index.html`. `color.css`, `amoxi-dark.css`, the
   `*-rtl.css` variants and `amoxi-landing.css` are alternate themes/layouts, mostly unused.
@@ -48,15 +77,17 @@ python -m http.server 8123 --bind 127.0.0.1   # then open http://127.0.0.1:8123/
   `356X200` grey blocks visible on the homepage are the template's **intentional
   placeholder images**, not broken assets.
 - **`assets/inc/sendemail.php`** — PHP contact-form handler.
+- **`robots.txt`** — allows crawling of all pages, disallows `/_dev/`. **`.gitignore`**
+  keeps OS junk and `*.bak`/`*_old.*` backups out of the repo.
 
-## `_scripts/` — one-off customization scripts, NOT a build pipeline
+## `_dev/scripts/` — one-off customization scripts, NOT a build pipeline
 
 Python scripts (`build_shop_page.py`, `apply_blue_everywhere.py`, `update_all_dropdowns.py`,
 `fix_header.py`, …) that were run manually to mutate the HTML in bulk when the template was
-Desmok-ified. They are **historical/ad-hoc tooling**, not part of any regular workflow, and
-several are one-shot text rewrites that may not be safe to re-run against the current HTML.
-Don't run them as a build; treat them as a record of how the customization was done. Prefer
-editing the `.html` files directly.
+Desmok-ified. They live under `_dev/` (outside the served page tree) as **historical/ad-hoc
+tooling**, not part of any regular workflow, and several are one-shot text rewrites that may
+not be safe to re-run against the current HTML. Don't run them as a build; treat them as a
+record of how the customization was done. Prefer editing the `.html` files directly.
 
 ## Editing conventions
 
@@ -66,5 +97,5 @@ editing the `.html` files directly.
 - Keep the **blue theme** consistent — brand color changes live in `assets/css/amoxi-blue.css`.
 - Because pages are independent files, a shared change (header, nav, footer) must be applied
   to **every** page it appears on; there is no template include/partial system.
-- **Leave the backups alone:** `index.html.bak` and `index_old.html` are snapshots, not live
-  pages — don't edit them and don't wire them into the site.
+- **No backup files in the tree:** old `*.bak` / `*_old.*` snapshots were removed and are now
+  git-ignored — rely on git history instead of leaving snapshot copies beside live pages.
