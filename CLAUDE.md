@@ -21,17 +21,25 @@ paths and JS). From the repo root:
 python -m http.server 8123 --bind 127.0.0.1   # then open http://127.0.0.1:8123/index.html
 ```
 
+- **Local-dev cache gotcha:** the Python server sends no `Cache-Control`, so Chrome
+  heuristically caches `assets/js/*.js` and `assets/css/*.css`. After editing JS/CSS,
+  hard-refresh (`Ctrl+Shift+R`) or you will be testing stale code. Vercel is unaffected
+  (it sends `must-revalidate` + ETags).
 - **Entry page:** `index.html` at the repo root (byte-identical to `pages/desmok/my-website.html`,
   the customized Desmok homepage). `index.html` and `404.html` are the **only** HTML at the
   root — everything else lives under `pages/` (see Layout).
-- The contact form posts to `assets/inc/sendemail.php`, so **actually sending mail needs a
-  PHP-capable server** (e.g. `php -S 127.0.0.1:8000`); the Python server above renders
-  everything else but cannot execute the PHP. **Note:** the live site is on Vercel (static),
-  which cannot run PHP — the form there needs a form service (Formspree/Web3Forms).
+- **Forms (contact/enquiry + newsletter) submit to Web3Forms** — no server code. The
+  handlers live in `assets/js/amoxi.js` (search `WEB3FORMS_ACCESS_KEY`): paste the free
+  access key from https://web3forms.com there, in that **one** place. Until it is set, the
+  forms show a "not configured" message instead of failing silently. Submissions go to the
+  email the key was issued to. The old PHP mailer (`assets/inc/sendemail.php`) was removed —
+  it was never configured (recipient `mail@mail.com`) and cannot run on Vercel.
 - **Deployment:** Vercel project `desmok` (team `akashs-projects-c931fb4b`), live at
   `https://desmok-five.vercel.app`. Not Git-connected (the GitHub repo is under another
-  account), so redeploy from this folder with `vercel --prod`. `.vercelignore` keeps `_dev/`,
-  `CLAUDE.md`, and `sendemail.php` out of the deploy.
+  account), so redeploy from this folder with `vercel --prod`. `.vercelignore` keeps `_dev/`
+  and `CLAUDE.md` out of the deploy. `vercel.json` adds security headers
+  (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`);
+  Vercel adds HSTS itself. No CSP yet — the template relies on inline scripts/styles.
 
 ## Paths — root-absolute
 
@@ -76,9 +84,9 @@ under `file://` (which was already unsupported).
 - **`assets/images/`** — image assets, organized by section. The large `1040X805` /
   `356X200` grey blocks visible on the homepage are the template's **intentional
   placeholder images**, not broken assets.
-- **`assets/inc/sendemail.php`** — PHP contact-form handler.
-- **`robots.txt`** — allows crawling of all pages, disallows `/_dev/`. **`.gitignore`**
-  keeps OS junk and `*.bak`/`*_old.*` backups out of the repo.
+- **`robots.txt`** — allows crawling; disallows `/_dev/` and the unlinked
+  `/pages/home-demos/`. **`.gitignore`** keeps OS junk and `*.bak`/`*_old.*` backups out
+  of the repo. **`vercel.json`** — security headers only (no build config).
 
 ## `_dev/scripts/` — one-off customization scripts, NOT a build pipeline
 

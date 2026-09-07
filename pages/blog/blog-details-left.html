@@ -441,7 +441,8 @@
 </div><!-- /.comments-one -->
 <div class="blog-details__form comments-form" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1300">
 <h3 class="blog-details__form__title comments-form__title" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1300">Leave a Comment</h3>
-<form action="/assets/inc/sendemail.php" class="blog-details__form__form contact-form-validated form-one">
+<form action="https://api.web3forms.com/submit" method="POST" class="blog-details__form__form contact-form-validated form-one">
+<input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off"/>
 <div class="form-one__group">
 <div class="form-one__control" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1300">
 <input name="name" placeholder="Your Name" type="text"/>
@@ -528,7 +529,7 @@
 <p class="footer-widget__newsletter-text">
                                             Subscribe to us to get latest news agency this &amp; useful tips.
                                         </p><!-- /.footer-widget__about-text -->
-<form action="#" class="footer-widget__newsletter mc-form" data-url="MAILCHIMP_FORM_URL">
+<form action="#" class="footer-widget__newsletter mc-form">
 <input class="footer-widget__newsletter__input" name="EMAIL" placeholder="Email Address" type="email"/>
 <button class="amoxi-btn-two" type="submit">Submit</button>
 </form><!-- /.footer-widget__newsletter -->
@@ -544,7 +545,7 @@
 </div><!-- /.bw-title-anim -->
 <div class="main-footer__bottom__inner">
 <p class="main-footer__copyright">
-                                    © Copyright <span class="dynamic-year"></span> by Desmok HTML Template.
+                                    © Copyright <span class="dynamic-year"></span> Desmok AI. All rights reserved.
                                 </p>
 </div><!-- /.main-footer__inner -->
 </div><!-- /.container -->
@@ -628,7 +629,7 @@
 </div><!-- /.sidebar-three__logo -->
 <div class="sidebar-three__about sidebar-three__item">
 <p class="sidebar-three__about__text">
-                    Desmok is a creative agency portfolio HTML template for modern agencies, customizable, responsive, to modify.
+                    Desmok AI is an AI product engineering &amp; automation studio: UI/UX design, web development, digital branding, creative design, marketing growth and startup launch solutions.
                 </p>
 </div><!-- /.sidebar-three__about -->
 <div class="sidebar-three__info sidebar-three__item">
@@ -657,7 +658,7 @@
 </div><!-- /.sidebar-three__info -->
 <div class="sidebar-three__newsletter sidebar-three__item">
 <label class="sidebar-three__title" for="sidebar-three-email">Newsletter</label>
-<form action="#" class="sidebar-three__newsletter__inner mc-form" data-url="MAILCHIMP_FORM_URL">
+<form action="#" class="sidebar-three__newsletter__inner mc-form">
 <input class="sidebar-three__newsletter__input" id="sidebar-three-email" name="EMAIL" placeholder="Email Address" type="email"/>
 <button class="sidebar-three__newsletter__btn" type="submit"><span aria-hidden="true" class="icon-email"></span></button>
 </form>
