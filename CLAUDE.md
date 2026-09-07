@@ -38,6 +38,7 @@ python -m http.server 8123 --bind 127.0.0.1   # then open http://127.0.0.1:8123/
 - **`assets/css/`** — `amoxi.css` is the base template stylesheet; **`amoxi-blue.css` is
   the active Desmok theme** loaded by `index.html`. `color.css`, `amoxi-dark.css`, the
   `*-rtl.css` variants and `amoxi-landing.css` are alternate themes/layouts, mostly unused.
+  `custom.css` holds small hand-written overrides layered on top of the theme.
 - **`assets/js/`** — `amoxi.js` (main, jQuery-based), `amoxi-landing.js`.
 - **`assets/vendors/`** — all third-party libs, vendored (not from a CDN): jQuery 3.7.1,
   Bootstrap 5, GSAP + ScrollSmoother/ScrollTrigger, Swiper, Owl Carousel, Slick, Isotope,
