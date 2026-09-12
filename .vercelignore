@@ -1,0 +1,7 @@
+# Internal tooling & docs — not part of the deployed site
+_dev/
+CLAUDE.md
+
+# Repo/meta
+.git/
+.gitignore

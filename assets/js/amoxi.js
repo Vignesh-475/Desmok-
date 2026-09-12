@@ -366,72 +366,112 @@
     });
   }
 
+  // ---- Desmok forms -> Web3Forms (static-host friendly; no PHP) ----------
+  // SETUP (one place): get a free access key at https://web3forms.com - enter
+  // your email and the key is emailed to you - then paste it below. Both the
+  // contact/enquiry forms and the newsletter forms use it; submissions are
+  // delivered to that email. The key is public by design (it can only send TO you).
+  var WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+  var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  var web3formsConfigured = function () {
+    return WEB3FORMS_ACCESS_KEY !== "YOUR_WEB3FORMS_ACCESS_KEY";
+  };
+  // Render fixed text only (jQuery `text:`), never raw HTML from the network.
+  var web3formsMessage = function ($target, text, ok) {
+    var cls = ok ? "success" : "error";
+    $target.empty().append(
+      $("<div/>", { "class": "inner " + cls }).append(
+        $("<p/>", { "class": cls, text: text })
+      )
+    );
+  };
+
   if ($(".contact-form-validated").length) {
     $(".contact-form-validated").validate({
-      // initialize the plugin
       rules: {
-        name: {
-          required: true
-        },
-        email: {
-          required: true,
-          email: true
-        },
-        message: {
-          required: true
-        },
-        subject: {
-          required: true
-        }
+        name: { required: true },
+        email: { required: true, email: true },
+        message: { required: true }
       },
       submitHandler: function (form) {
-        // sending value with ajax request
-        $.post(
-          $(form).attr("action"),
-          $(form).serialize(),
-          function (response) {
-            $(form).parent().find(".result").append(response);
-            $(form).find('input[type="text"]').val("");
-            $(form).find('input[type="email"]').val("");
-            $(form).find("textarea").val("");
-          }
-        );
+        var $form = $(form);
+        var $result = $form.parent().find(".result");
+        var showMsg = function (text, ok) { web3formsMessage($result, text, ok); };
+
+        if (!web3formsConfigured()) {
+          showMsg("This form is not configured yet. Please email us directly.", false);
+          return false;
+        }
+
+        var data = new FormData(form);
+        if (data.get("botcheck")) { return false; } // honeypot: silently drop bots
+        data.delete("botcheck");
+        data.append("access_key", WEB3FORMS_ACCESS_KEY);
+        data.append("subject", "New enquiry from the Desmok website");
+        data.append("from_name", "Desmok Website");
+
+        var $btn = $form.find('button[type="submit"]').prop("disabled", true);
+        fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: data })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res && res.success) {
+              showMsg("Thanks for contacting us. We will get back to you ASAP!", true);
+              form.reset();
+              if ($.fn.selectpicker) { $form.find(".selectpicker").selectpicker("refresh"); }
+            } else {
+              showMsg("Something went wrong. Please try again or email us directly.", false);
+            }
+          })
+          .catch(function () {
+            showMsg("Network error. Please try again or email us directly.", false);
+          })
+          .finally(function () { $btn.prop("disabled", false); });
         return false;
       }
     });
   }
 
-  // mailchimp form
+  // newsletter forms -> Web3Forms (replaces the Mailchimp/ajaxChimp placeholder)
   if ($(".mc-form").length) {
     $(".mc-form").each(function () {
       var Self = $(this);
-      var mcURL = Self.data("url");
       var mcResp = Self.parent().find(".mc-form__response");
+      if (!mcResp.length) {
+        // the footer variant ships without a response element; add one
+        mcResp = $('<div class="mc-form__response"/>').insertAfter(Self);
+      }
+      var showMsg = function (text, ok) {
+        mcResp.empty().append($("<p/>", { "class": "mc-message", text: text }));
+        Self.add(mcResp)
+          .removeClass(ok ? "errored" : "successed")
+          .addClass(ok ? "successed" : "errored");
+        mcResp.find("p").fadeOut(10000);
+      };
 
-      Self.ajaxChimp({
-        url: mcURL,
-        callback: function (resp) {
-          // appending response
-          mcResp.append(function () {
-            return '<p class="mc-message">' + resp.msg + "</p>";
-          });
-          // making things based on response
-          if (resp.result === "success") {
-            // Do stuff
-            Self.removeClass("errored").addClass("successed");
-            mcResp.removeClass("errored").addClass("successed");
-            Self.find("input").val("");
-
-            mcResp.find("p").fadeOut(10000);
-          }
-          if (resp.result === "error") {
-            Self.removeClass("successed").addClass("errored");
-            mcResp.removeClass("successed").addClass("errored");
-            Self.find("input").val("");
-
-            mcResp.find("p").fadeOut(10000);
-          }
+      Self.on("submit", function (e) {
+        e.preventDefault();
+        var email = (Self.find('input[type="email"]').val() || "").trim();
+        if (!email) { showMsg("Please enter your email address.", false); return; }
+        if (!web3formsConfigured()) {
+          showMsg("Newsletter signup is not configured yet.", false);
+          return;
         }
+        var data = new FormData();
+        data.append("access_key", WEB3FORMS_ACCESS_KEY);
+        data.append("subject", "New newsletter subscription (Desmok website)");
+        data.append("from_name", "Desmok Website");
+        data.append("email", email);
+        fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: data })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (res && res.success) {
+              showMsg("Thanks for subscribing!", true);
+              Self.find("input").val("");
+            } else {
+              showMsg("Something went wrong. Please try again.", false);
+            }
+          })
+          .catch(function () { showMsg("Network error. Please try again.", false); });
       });
     });
   }

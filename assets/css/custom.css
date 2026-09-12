@@ -1,0 +1,69 @@
+/* ============================================================
+   Desmok — custom overrides (loaded LAST).
+   Fixes only, no redesign. Keeps the dark theme, blue accent,
+   pill buttons with arrow circles, and the outline marquee.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1 & 2. Header left column
+   Root cause: the base template has no `.main-header__left` flex
+   rule (only the --two/--three/--five variants do), so the logo
+   and the sidebar toggler stacked vertically — pushing the logo
+   to the top and dropping the blue toggler underneath it.
+   ------------------------------------------------------------ */
+.main-header__left {
+  display: flex;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------
+   1. Logo — navy mark inside a compact white circle, sized to
+   sit inline and vertically centered with the nav / CTA.
+   (The circle is baked into assets/images/desmok-logo.png.)
+   ------------------------------------------------------------ */
+.main-header__logo img,
+.sticky-header__logo img,
+.logo-box img,
+.sidebar-three__logo img,
+.footer-widget__logo img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+/* footer logo a touch larger for visual balance */
+.footer-widget__logo img {
+  width: 80px;
+  height: 80px;
+}
+
+/* ------------------------------------------------------------
+   2. Offcanvas/sidebar toggle (blue circle).
+   The desktop header already exposes the full nav + CTA, so the
+   toggle is redundant there and only looked broken stacked under
+   the logo. Hide it from 992px up; it still works on tablet/mobile.
+   ------------------------------------------------------------ */
+@media (min-width: 992px) {
+  .main-header .sidebar-btn__toggler {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   3 & 5. Hero stacking order — make it explicit and consistent:
+     - hero image  = background layer (behind)
+     - marquee     = mid layer (outline text reads over the image)
+     - content     = top layer (paragraph, buttons, floating card
+                     always readable, never covered)
+   This fixes the marquee appearing "hidden" and keeps the copy in
+   front of the artwork at every breakpoint.
+   ------------------------------------------------------------ */
+.hero-two__image {
+  z-index: 1;
+}
+.hero-two .marquee {
+  z-index: 2;
+}
+.hero-two .container {
+  z-index: 3;
+}
