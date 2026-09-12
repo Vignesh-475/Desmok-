@@ -67,3 +67,20 @@
 .hero-two .container {
   z-index: 3;
 }
+
+/* ------------------------------------------------------------
+   6. Contact form heading ("Our Contact Now" + title).
+   The template fills these near-black on the white card, which
+   read as washed-out grey. Use a brand blue gradient instead;
+   background-size 100% keeps it fully coloured regardless of the
+   split-text scroll animation's background-position.
+   ------------------------------------------------------------ */
+.contact-one .sec-title__tagline.bw-split-text > div {
+  background-image: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+  background-size: 100% 100%;
+  font-weight: 600;
+}
+.contact-one .sec-title__title.bw-split-text > div {
+  background-image: linear-gradient(90deg, #0a2a6b 0%, #007bff 55%, #00b4ff 100%);
+  background-size: 100% 100%;
+}
