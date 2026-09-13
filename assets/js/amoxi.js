@@ -265,12 +265,6 @@
     });
   }
 
-  let dynamicyearElm = $(".dynamic-year");
-  if (dynamicyearElm.length) {
-    let currentYear = new Date().getFullYear();
-    dynamicyearElm.html(currentYear);
-  }
-
   // Date Picker
   if ($(".amoxi-datepicker").length) {
     $(".amoxi-datepicker").each(function () {
