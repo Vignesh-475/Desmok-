@@ -84,3 +84,23 @@
   background-image: linear-gradient(90deg, #0a2a6b 0%, #007bff 55%, #00b4ff 100%);
   background-size: 100% 100%;
 }
+
+/* ------------------------------------------------------------
+   7. Preloader logo size (the flash seen on refresh / tab switch).
+   The theme sets `background-size: 60px auto` on .preloader__image,
+   a value tuned to the template's original wide wordmark. The Desmok
+   mark is a near-square logo, and its PNG used to carry ~88% empty
+   canvas, so 60px rendered the visible mark at only 32x25px — it
+   looked like a speck in the middle of the screen.
+
+   assets/images/loader*.png are now cropped to the mark itself
+   (549x423, no padding), so background-size maps 1:1 to what you see.
+   ------------------------------------------------------------ */
+.preloader__image {
+  background-size: 120px auto;
+}
+@media (max-width: 575px) {
+  .preloader__image {
+    background-size: 88px auto;
+  }
+}
