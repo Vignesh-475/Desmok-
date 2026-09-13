@@ -385,6 +385,9 @@
       rules: {
         name: { required: true },
         email: { required: true, email: true },
+        // both are marked * in the markup, so enforce them
+        phone: { required: true },
+        service: { required: true },
         message: { required: true }
       },
       submitHandler: function (form) {
