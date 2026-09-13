@@ -5,3 +5,7 @@ CLAUDE.md
 # Repo/meta
 .git/
 .gitignore
+
+# Secrets / local Vercel link — the repo root is served as-is, so these would be public
+.env*
+.vercel

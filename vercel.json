@@ -1,12 +1,642 @@
 {
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "",
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/pages/company/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/company/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid.html",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-carousel",
+      "destination": "/blog/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-carousel.html",
+      "destination": "/blog/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-carousel-2",
+      "destination": "/blog/carousel-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-carousel-2.html",
+      "destination": "/blog/carousel-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-2",
+      "destination": "/blog/grid-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-2.html",
+      "destination": "/blog/grid-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-2-left",
+      "destination": "/blog/grid-2-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-2-left.html",
+      "destination": "/blog/grid-2-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-2-right",
+      "destination": "/blog/grid-2-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-2-right.html",
+      "destination": "/blog/grid-2-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-left",
+      "destination": "/blog/grid-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-left.html",
+      "destination": "/blog/grid-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-right",
+      "destination": "/blog/grid-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-grid-right.html",
+      "destination": "/blog/grid-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-list",
+      "destination": "/blog/list",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-list.html",
+      "destination": "/blog/list",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-list-left",
+      "destination": "/blog/list-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-list-left.html",
+      "destination": "/blog/list-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-list-right",
+      "destination": "/blog/list-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-list-right.html",
+      "destination": "/blog/list-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-details",
+      "destination": "/blog/post",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-details.html",
+      "destination": "/blog/post",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-details-left",
+      "destination": "/blog/post-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-details-left.html",
+      "destination": "/blog/post-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-details-right",
+      "destination": "/blog/post-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/blog/blog-details-right.html",
+      "destination": "/blog/post-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/cart",
+      "destination": "/cart",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/cart.html",
+      "destination": "/cart",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/checkout",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/checkout.html",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/pages/company/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pages/company/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-2",
+      "destination": "/demos/home-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-2.html",
+      "destination": "/demos/home-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-2-one-page",
+      "destination": "/demos/home-2-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-2-one-page.html",
+      "destination": "/demos/home-2-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-3",
+      "destination": "/demos/home-3",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-3.html",
+      "destination": "/demos/home-3",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-3-one-page",
+      "destination": "/demos/home-3-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-3-one-page.html",
+      "destination": "/demos/home-3-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-4",
+      "destination": "/demos/home-4",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-4.html",
+      "destination": "/demos/home-4",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-4-one-page",
+      "destination": "/demos/home-4-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-4-one-page.html",
+      "destination": "/demos/home-4-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-5",
+      "destination": "/demos/home-5",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-5.html",
+      "destination": "/demos/home-5",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-5-one-page",
+      "destination": "/demos/home-5-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-5-one-page.html",
+      "destination": "/demos/home-5-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-6",
+      "destination": "/demos/home-6",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-6.html",
+      "destination": "/demos/home-6",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-6-one-page",
+      "destination": "/demos/home-6-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-6-one-page.html",
+      "destination": "/demos/home-6-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-boxed",
+      "destination": "/demos/home-boxed",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-boxed.html",
+      "destination": "/demos/home-boxed",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-one-page",
+      "destination": "/demos/home-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/home-demos/index-one-page.html",
+      "destination": "/demos/home-one-page",
+      "permanent": true
+    },
+    {
+      "source": "/pages/company/faq",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/pages/company/faq.html",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery.html",
+      "destination": "/gallery",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery-carousel",
+      "destination": "/gallery/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery-carousel.html",
+      "destination": "/gallery/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery-filter",
+      "destination": "/gallery/filter",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery-filter.html",
+      "destination": "/gallery/filter",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery-grid",
+      "destination": "/gallery/grid",
+      "permanent": true
+    },
+    {
+      "source": "/pages/gallery/gallery-grid.html",
+      "destination": "/gallery/grid",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/packages",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/packages.html",
+      "destination": "/packages",
+      "permanent": true
+    },
+    {
+      "source": "/pages/portfolio/portfolio",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/pages/portfolio/portfolio.html",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/pages/portfolio/portfolio-details",
+      "destination": "/portfolio/project",
+      "permanent": true
+    },
+    {
+      "source": "/pages/portfolio/portfolio-details.html",
+      "destination": "/portfolio/project",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/my-services",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/my-services.html",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-creative-design",
+      "destination": "/services/creative-design",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-creative-design.html",
+      "destination": "/services/creative-design",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-digital-branding",
+      "destination": "/services/digital-branding",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-digital-branding.html",
+      "destination": "/services/digital-branding",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-marketing-growth",
+      "destination": "/services/marketing-growth",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-marketing-growth.html",
+      "destination": "/services/marketing-growth",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services/services",
+      "destination": "/services/overview",
+      "permanent": true
+    },
+    {
+      "source": "/pages/services/services.html",
+      "destination": "/services/overview",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-startup-launch",
+      "destination": "/services/startup-launch",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-startup-launch.html",
+      "destination": "/services/startup-launch",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-ui-ux",
+      "destination": "/services/ui-ux",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-ui-ux.html",
+      "destination": "/services/ui-ux",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-web-development",
+      "destination": "/services/web-development",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/service-d-web-development.html",
+      "destination": "/services/web-development",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/my-shop",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/my-shop.html",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/product-details",
+      "destination": "/shop/product",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/product-details.html",
+      "destination": "/shop/product",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products",
+      "destination": "/shop/products",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products.html",
+      "destination": "/shop/products",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products-carousel",
+      "destination": "/shop/products-carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products-carousel.html",
+      "destination": "/shop/products-carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products-left",
+      "destination": "/shop/products-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products-left.html",
+      "destination": "/shop/products-left",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products-right",
+      "destination": "/shop/products-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop/products-right.html",
+      "destination": "/shop/products-right",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team.html",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-carousel",
+      "destination": "/team/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-carousel.html",
+      "destination": "/team/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-carousel-2",
+      "destination": "/team/carousel-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-carousel-2.html",
+      "destination": "/team/carousel-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-2",
+      "destination": "/team/grid-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-2.html",
+      "destination": "/team/grid-2",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-details",
+      "destination": "/team/member",
+      "permanent": true
+    },
+    {
+      "source": "/pages/team/team-details.html",
+      "destination": "/team/member",
+      "permanent": true
+    },
+    {
+      "source": "/pages/testimonials/testimonials",
+      "destination": "/testimonials",
+      "permanent": true
+    },
+    {
+      "source": "/pages/testimonials/testimonials.html",
+      "destination": "/testimonials",
+      "permanent": true
+    },
+    {
+      "source": "/pages/testimonials/testimonials-carousel",
+      "destination": "/testimonials/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/pages/testimonials/testimonials-carousel.html",
+      "destination": "/testimonials/carousel",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/my-website",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pages/desmok/my-website.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        }
       ]
     }
   ]

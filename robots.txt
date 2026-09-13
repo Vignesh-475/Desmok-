@@ -4,5 +4,6 @@ Allow: /
 # Internal, non-page assets
 Disallow: /_dev/
 
-# Unlinked template demo homepages (kept as a component reference, not real content)
+# Template demo homepages (kept as a component reference, not real content)
+Disallow: /demos/
 Disallow: /pages/home-demos/
